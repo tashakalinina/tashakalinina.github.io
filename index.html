@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днем Рождения, Кристина!</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Neucha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    <style>
+        :root {
+            --primary: #e91e63;
+            --secondary: #9c27b0;
+            --accent: #ffeb3b;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --magic-glow: 0 0 20px rgba(233, 30, 99, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Neucha", cursive;
+        }
+
+        body {
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 50px 20px;
+            min-height: 10vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(156, 39, 176, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(233, 30, 99, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 235, 59, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .header h1 {
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .magic-orb {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .orb-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .orb-2 { top: 60%; right: 15%; animation-delay: 2s; }
+        .orb-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+
+        /* Music Player Section */
+        .music-player {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .player-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--magic-glow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .player-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .player-container iframe {
+            border-radius: 15px;
+            width: 100%;
+            max-width: 760px;
+            height: 240px;
+            border: none;
+        }
+
+        /* Greeting Section */
+        .greeting {
+            text-align: center;
+        }
+
+        .greeting-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: var(--magic-glow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .greeting-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .greeting p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .greeting p.highlight {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 30px;
+        }
+
+        /* Photo Gallery Section */
+        .gallery {
+            text-align: center;
+        }
+
+        .slider-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                var(--magic-glow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slide {
+            position: relative;
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .slide-content {
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .slide-content h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .slide-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .slider-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .slider-btn:hover {
+            background: var(--gradient);
+            transform: scale(1.1);
+            border-color: transparent;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: var(--light);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: var(--accent);
+            background: var(--gradient);
+            border-color: transparent;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .greeting-content {
+                padding: 30px;
+            }
+
+            .slide {
+                height: 400px;
+            }
+
+            .slide-content h3 {
+                font-size: 1.6rem;
+            }
+
+            .player-container {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .greeting p {
+                font-size: 1.1rem;
+            }
+
+            .slide {
+                height: 300px;
+            }
+
+            .slider-btn {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg" id="cosmicBg"></div>
+
+    <!-- Header Section -->
+    <section class="header">
+        <div class="magic-orb orb-1"></div>
+        <div class="magic-orb orb-2"></div>
+        <div class="magic-orb orb-3"></div>
+        
+        <div class="container header-content">
+            <h1>С Днём Рождения, Кристина!</h1>
+        </div>
+    </section>
+
+    <!-- Music Player Section -->
+    <section class="music-player">
+        <div class="container">
+            <h2 class="section-title">Музыка Волшебства</h2>
+            <div class="player-container">
+                <iframe src="https://suno.com/embed/723d0f50-1039-4031-a662-f7a1c8b73bfb" width="760" height="240" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Greeting Section -->
+    <section class="greeting">
+        <div class="container">
+            <h2 class="section-title">Магическое Послание</h2>
+            <div class="greeting-content">
+                <p>Дорогая Кристина! В этот особенный день мы хотим пожелать тебе самого настоящего волшебства! Пусть твоя жизнь будет похожа на яркое представление, где каждый день — это новый всплеск эмоций, каждое достижение — шквал аплодисментов, а каждое мгновение наполнено светом и вдохновением.</p>
+                
+                <p>Желаем, чтобы твои мечты взлетали выше самых смелых ожиданий, а сердце всегда было переполнено радостью и любовью. Пусть удача всегда будет рядом, а любые преграды превращаются в новые возможности.</p>
+                
+                <p>Оставайся такой же яркой, удивительной и прекрасной! Пусть твоя жизнь будет полна красок, вдохновения, искренних улыбок и мгновений, от которых замирает сердце.</p>
+                
+                <p class="highlight">С днём рождения, волшебница! ✨</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Галерея Чудес</h2>
+            <div class="slider-container">
+                <div class="slider" id="slider">
+                    <div class="slide" style="background-image: url('./img/123.jpg');">
+                        <div class="slide-content">
+                            <!-- <h3>Сила Дружбы</h3> -->
+                            <p>Когда мы вместе, никто не круче</p>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image: url('./img/124.jpg');">
+                        <div class="slide-content">
+                            <!-- <h3>Танец Жизни</h3> -->
+                            <p>Сочиняй мечты</p>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image: url('./img/125.jpg');">
+                        <div class="slide-content">
+                            <!-- <h3>Сияние Души</h3> -->
+                            <p>Твоя улыбка способна осветить даже самую тёмную ночь</p>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image: url('./img/126.jpg');">
+                        <div class="slide-content">
+                            <!-- <h3>Загадочная Красота</h3> -->
+                            <p>Будь собой, никто не сможет сделать это лучше</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Пусть каждый твой день будет наполнен магией и чудесами!</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
+    <script>
+        // Create stars for cosmic background
+        function createStars() {
+            const cosmicBg = document.getElementById('cosmicBg');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                cosmicBg.appendChild(star);
+            }
+        }
+
+        // Initialize slider
+        function initSlider() {
+            const slider = tns({
+                container: '#slider',
+                items: 1,
+                slideBy: 1,
+                autoplay: true,
+                autoplayButtonOutput: false,
+                autoplayTimeout: 6000,
+                controls: false,
+                nav: false,
+                speed: 800,
+                responsive: {
+                    768: {
+                        items: 1
+                    }
+                }
+            });
+            
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                slider.goTo('prev');
+            });
+            
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                slider.goTo('next');
+            });
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-on-scroll');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section .container').forEach((section) => {
+                observer.observe(section);
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            initSlider();
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>
